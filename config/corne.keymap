@@ -1,12 +1,25 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
+
+#define DEFAULT_LAYER 0
+#define NUMBERS 1
+#define SPECIAL 2
+#define BT 3
+
+#define NEW_LBKT 0x30
+#define NEW_RBKT 0x31
+#define NEW_TILDE APOS
+#define NEW_GRAVE LBKT
+#define BSLH_QST INT1
+#define COLON_SEMI SLASH
+#define CEDILHA SEMI
+
+#define SOUND_DOWN F11
+#define SOUND_UP F12
+#define MUTE F10
 
 / {
         keymap {
@@ -52,5 +65,21 @@
                              &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
+
+// --------------------------------------------------              -------------------------------------------------------
+// | trans | BT_CLR |       |   UP  | PRINT | BOOT  |              | BOOT  | SOUND_DOWN |   UP  | SOUND_UP | MUTE | trans |
+// | trans |        |  LEFT |  DOWN | RIGHT | RESET |              | RESET |    LEFT    |  DOWN |   RIGHT  |      | trans |
+// | trans | BTS_0  | BTS_1 | BTS_2 | BTS_3 | BTS_4 |              |       |            |       |          |      |       |
+//                  | trans | trans | trans | trans |              | trans |    trans   | trans |   trans  |
+//                  ---------------------------------              -----------------------------------------
+        bt_layer {
+            bindings = <
+    &trans  &bt BT_CLR    &none         &kp UP        &kp PSCRN     &bootloader          &bootloader  &kp SOUND_DOWN  &kp UP    &kp SOUND_UP  &kp MUTE  &trans
+    &trans  &none         &kp LEFT      &kp DOWN      &kp RIGHT     &sys_reset           &sys_reset   &kp LEFT        &kp DOWN  &kp RIGHT     &none     &trans
+    &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4         &none        &none           &none     &none         &none     &none
+                                        &trans        &trans        &trans               &trans       &trans          &trans
+            >;
+        };
+
         };
 };
