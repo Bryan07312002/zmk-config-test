@@ -1,25 +1,25 @@
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/rgb.h>
+include <behaviors.dtsi>
+include <dt-bindings/zmk/keys.h>
+include <dt-bindings/zmk/bt.h>
+include <dt-bindings/zmk/outputs.h>
+include <dt-bindings/zmk/rgb.h>
 
-#define DEFAULT_LAYER 0
-#define NUMBERS 1
-#define SPECIAL 2
-#define BT 3
+define DEFAULT_LAYER 0
+define NUMBERS 1
+define SPECIAL 2
+define BT 3
 
-#define NEW_LBKT 0x30
-#define NEW_RBKT 0x31
-#define NEW_TILDE APOS
-#define NEW_GRAVE LBKT
-#define BSLH_QST INT1
-#define COLON_SEMI SLASH
-#define CEDILHA SEMI
+define NEW_LBKT 0x30
+define NEW_RBKT 0x31
+define NEW_TILDE APOS
+define NEW_GRAVE LBKT
+define BSLH_QST INT1
+define COLON_SEMI SLASH
+define CEDILHA SEMI
 
-#define SOUND_DOWN F11
-#define SOUND_UP F12
-#define MUTE F10
+define SOUND_DOWN F11
+define SOUND_UP F12
+define MUTE F10
 
 / {
         keymap {
